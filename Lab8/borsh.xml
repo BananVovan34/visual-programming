@@ -1,0 +1,16 @@
+﻿<recipe>
+    <title>Борщ</title>
+    <ingredients>
+        <ingredient amount="300 г">Свекла</ingredient>
+        <ingredient amount="200 г">Капуста</ingredient>
+        <ingredient amount="2 шт.">Картофель</ingredient>
+        <ingredient amount="1 шт.">Морковь</ingredient>
+        <ingredient amount="по вкусу">Соль</ingredient>
+    </ingredients>
+    <steps>
+        <step>Нарезать овощи.</step>
+        <step>Отварить свеклу.</step>
+        <step>Добавить картофель и капусту.</step>
+        <step>Посолить и варить до готовности.</step>
+    </steps>
+</recipe>

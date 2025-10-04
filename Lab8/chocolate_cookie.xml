@@ -1,0 +1,19 @@
+﻿<recipe>
+    <title>Шоколадное печенье</title>
+    <ingredients>
+        <ingredient amount="200 г">Мука</ingredient>
+        <ingredient amount="100 г">Масло сливочное</ingredient>
+        <ingredient amount="150 г">Сахар</ingredient>
+        <ingredient amount="1 шт.">Яйцо</ingredient>
+        <ingredient amount="100 г">Шоколад</ingredient>
+        <ingredient amount="1 ч. л.">Разрыхлитель</ingredient>
+    </ingredients>
+    <steps>
+        <step>Растопить масло и смешать с сахаром.</step>
+        <step>Добавить яйцо и взбить.</step>
+        <step>Добавить муку и разрыхлитель.</step>
+        <step>Нарезать шоколад и вмешать в тесто.</step>
+        <step>Выложить тесто ложкой на противень.</step>
+        <step>Выпекать при 180°C 12–15 минут.</step>
+    </steps>
+</recipe>
