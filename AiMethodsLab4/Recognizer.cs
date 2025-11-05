@@ -109,10 +109,17 @@ namespace visualprogramming.AiMethodsLab4
 
         private void ClearCanvas()
         {
+            if (canvasBitmap != null)
+                canvasBitmap.Dispose();
+
+            canvasBitmap = new Bitmap(ImageSize, ImageSize);
             using (Graphics g = Graphics.FromImage(canvasBitmap))
                 g.Clear(Color.White);
+
+            pictureBox.Image = canvasBitmap;
             pictureBox.Invalidate();
         }
+
 
         private void AddNewClass()
         {
@@ -187,11 +194,17 @@ namespace visualprogramming.AiMethodsLab4
         private void ShowExamplePreview(string className, int index)
         {
             if (index < 0) return;
+
             var example = dataset[className][index];
+
+            if (canvasBitmap != null)
+                canvasBitmap.Dispose();
+
             canvasBitmap = (Bitmap)example.Clone();
             pictureBox.Image = canvasBitmap;
             pictureBox.Invalidate();
         }
+
 
         private void SaveCurrentClass()
         {
@@ -290,22 +303,34 @@ namespace visualprogramming.AiMethodsLab4
 
         private int HammingDistance(Bitmap a, Bitmap b)
         {
-            int reducedSize = 32;
-            Bitmap aSmall = new Bitmap(a, reducedSize, reducedSize);
-            Bitmap bSmall = new Bitmap(b, reducedSize, reducedSize);
+            int size = 32;
+            Bitmap aSmall = new Bitmap(a, size, size);
+            Bitmap bSmall = new Bitmap(b, size, size);
+            Bitmap bMirror = new Bitmap(bSmall);
+            bMirror.RotateFlip(RotateFlipType.RotateNoneFlipX);
 
-            int dist = 0;
-            for (int x = 0; x < reducedSize; x++)
+            int normalDist = 0;
+            int mirrorDist = 0;
+
+            for (int x = 0; x < size; x++)
             {
-                for (int y = 0; y < reducedSize; y++)
+                for (int y = 0; y < size; y++)
                 {
-                    bool aBlack = aSmall.GetPixel(x, y).GetBrightness() < 0.5;
-                    bool bBlack = bSmall.GetPixel(x, y).GetBrightness() < 0.5;
+                    bool aBlack = aSmall.GetPixel(x, y).GetBrightness() < 0.6f;
+                    bool bBlack = bSmall.GetPixel(x, y).GetBrightness() < 0.6f;
+                    bool bBlackMirror = bMirror.GetPixel(x, y).GetBrightness() < 0.6f;
+
                     if (aBlack != bBlack)
-                        dist++;
+                        normalDist++;
+
+                    if (aBlack != bBlackMirror)
+                        mirrorDist++;
                 }
             }
-            return dist;
+
+            return Math.Min(normalDist, mirrorDist);
         }
+
+
     }
 }
