@@ -1,4 +1,5 @@
 using visualprogramming.AiMethodsLab4;
+using visualprogramming.CounterMine;
 using visualprogramming.lab2;
 using visualprogramming.Lab3;
 using visualprogramming.Lab4;
@@ -6,6 +7,7 @@ using visualprogramming.Lab5;
 using visualprogramming.Lab6;
 using visualprogramming.Lab7;
 using visualprogramming.Lab8;
+using visualprogramming.Lab9;
 using windowsforms;
 
 namespace visualprogramming
@@ -43,7 +45,12 @@ namespace visualprogramming
             //Application.Run(new RecipeLoader());
             
             // AiMethods Lab4
-            Application.Run(new Recognizer());
+            //Application.Run(new Recognizer());
+            
+            //LevelProgressionModel.RunSimulation();
+            
+            ApplicationConfiguration.Initialize();
+            Application.Run(new MultiThreadGraphics());
         }
     }
 }
